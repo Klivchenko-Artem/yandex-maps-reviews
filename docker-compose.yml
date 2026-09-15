@@ -1,0 +1,76 @@
+# Стенд целиком: docker compose up -d --build → http://localhost:8095
+x-app-env: &app-env
+  DB_CONNECTION: pgsql
+  DB_HOST: postgres
+  DB_PORT: 5432
+  DB_DATABASE: ${DB_DATABASE:-yandex_reviews}
+  DB_USERNAME: ${DB_USERNAME:-yandex_reviews}
+  DB_PASSWORD: ${DB_PASSWORD:-secret}
+
+x-app: &app
+  build:
+    context: .
+    target: app
+  image: yandex-reviews-app
+  env_file: .env
+  environment: *app-env
+  volumes:
+    - storage:/var/www/html/storage
+  depends_on:
+    postgres:
+      condition: service_healthy
+  restart: unless-stopped
+
+services:
+  app:
+    <<: *app
+    environment:
+      <<: *app-env
+      # Миграции и сид пользователя накатывает только app, воркеры ждут готовую схему.
+      RUN_MIGRATIONS: "true"
+
+  queue:
+    <<: *app
+    # Таймаут не меньше SyncOrganization::TIMEOUT, иначе воркер убьёт задачу посреди обхода страниц.
+    command: php artisan queue:work --queue=parsing,default --sleep=3 --timeout=1200 --max-time=3600
+    depends_on:
+      app:
+        condition: service_started
+
+  scheduler:
+    <<: *app
+    command: php artisan schedule:work
+    depends_on:
+      app:
+        condition: service_started
+
+  web:
+    build:
+      context: .
+      target: web
+    image: yandex-reviews-web
+    ports:
+      - "${APP_PORT:-8095}:80"
+    depends_on:
+      - app
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${DB_DATABASE:-yandex_reviews}
+      POSTGRES_USER: ${DB_USERNAME:-yandex_reviews}
+      # Стендовый пароль, наружу база не публикуется.
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-secret}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  storage:

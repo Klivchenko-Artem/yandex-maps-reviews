@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory>app</directory>
+        </include>
+    </source>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="APP_LOCALE" value="ru"/>
+        <env name="APP_KEY" value="base64:dGVzdGluZy1rZXktdGVzdGluZy1rZXktdGVzdGluZzE="/>
+        <env name="APP_MAINTENANCE_DRIVER" value="file"/>
+        <env name="BCRYPT_ROUNDS" value="4"/>
+        <env name="BROADCAST_CONNECTION" value="null"/>
+        <env name="CACHE_STORE" value="array"/>
+        <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="DB_DATABASE" value=":memory:"/>
+        <env name="DB_URL" value=""/>
+        <env name="MAIL_MAILER" value="array"/>
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="APP_URL" value="http://localhost"/>
+        <env name="SANCTUM_STATEFUL_DOMAINS" value="localhost"/>
+        <env name="SEED_USER_NAME" value="Демо"/>
+        <env name="SEED_USER_EMAIL" value="demo@example.com"/>
+        <env name="SEED_USER_PASSWORD" value="demo12345"/>
+        <env name="YANDEX_BASE_URL" value="https://yandex.ru"/>
+        <env name="YANDEX_MAX_PAGES" value="12"/>
+        <env name="YANDEX_BLOCK_COOLDOWN" value="900"/>
+        <env name="YANDEX_PAGE_RETRIES" value="2"/>
+        <env name="YANDEX_PROXIES" value=""/>
+        <env name="YANDEX_MIN_INTERVAL_MS" value="0"/>
+        <env name="YANDEX_JITTER_MS" value="0"/>
+        <env name="YANDEX_PAGE_RETRY_DELAY_MS" value="0"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="PULSE_ENABLED" value="false"/>
+        <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="NIGHTWATCH_ENABLED" value="false"/>
+    </php>
+</phpunit>

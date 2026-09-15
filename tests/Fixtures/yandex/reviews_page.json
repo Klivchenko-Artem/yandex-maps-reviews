@@ -1,0 +1,105 @@
+{
+  "data": {
+    "reviews": [
+      {
+        "reviewId": "fixtureReview1",
+        "businessId": "1000000001",
+        "author": {
+          "name": "Анна К.",
+          "avatarUrl": "https://avatars.mds.yandex.net/get-yapic/1/fixture1/{size}",
+          "professionLevel": "Знаток города 15 уровня",
+          "rtb": "Знаток города 15 уровня",
+          "rtbType": "PROFESSION",
+          "publicId": "public1",
+          "achievements": [],
+          "professions": [],
+          "isSubscribed": false
+        },
+        "text": "Отличное место, всё понравилось.",
+        "textLanguage": "ru",
+        "textTranslations": {},
+        "rating": 5,
+        "updatedTime": "2026-09-14T18:42:52.279Z",
+        "reactions": {
+          "likes": 5,
+          "dislikes": 1,
+          "userReaction": "NONE"
+        },
+        "photos": [],
+        "videos": [],
+        "pinned": false
+      },
+      {
+        "reviewId": "fixtureReview2",
+        "businessId": "1000000001",
+        "author": {
+          "name": "Игорь",
+          "avatarUrl": "https://avatars.mds.yandex.net/get-yapic/1/fixture2/{size}",
+          "professionLevel": "Знаток города 15 уровня",
+          "rtb": "Знаток города 15 уровня",
+          "rtbType": "PROFESSION",
+          "publicId": "public2",
+          "achievements": [],
+          "professions": [],
+          "isSubscribed": false
+        },
+        "text": "Долго ждали заказ,\nно в целом нормально.",
+        "textLanguage": "ru",
+        "textTranslations": {},
+        "rating": 3,
+        "updatedTime": "2026-09-10T07:00:00.000Z",
+        "reactions": {
+          "likes": 5,
+          "dislikes": 0,
+          "userReaction": "NONE"
+        },
+        "photos": [],
+        "videos": [],
+        "pinned": false,
+        "businessComment": {
+          "text": "Спасибо за отзыв, поработаем над скоростью.",
+          "updatedTime": "2026-09-11T08:00:00.000Z"
+        }
+      },
+      {
+        "reviewId": "fixtureReview3",
+        "businessId": "1000000001",
+        "author": {
+          "name": "Мария Петрова",
+          "avatarUrl": "https://avatars.mds.yandex.net/get-yapic/1/fixture3/{size}",
+          "professionLevel": "Знаток города 10 уровня",
+          "rtb": "Знаток города 10 уровня",
+          "rtbType": "PROFESSION",
+          "publicId": "public3",
+          "achievements": [],
+          "professions": [],
+          "isSubscribed": false
+        },
+        "text": "Не рекомендую.",
+        "textLanguage": "ru",
+        "textTranslations": {},
+        "rating": 1,
+        "updatedTime": "2026-08-01T12:30:00.000Z",
+        "reactions": {
+          "likes": 6,
+          "dislikes": 0,
+          "userReaction": "NONE"
+        },
+        "photos": [],
+        "videos": [],
+        "pinned": false
+      }
+    ],
+    "params": {
+      "offset": 0,
+      "limit": 50,
+      "count": 3,
+      "loadedReviewsCount": 3,
+      "page": 1,
+      "totalPages": 1,
+      "reviewsRemained": 0
+    },
+    "tags": [],
+    "aspects": []
+  }
+}
